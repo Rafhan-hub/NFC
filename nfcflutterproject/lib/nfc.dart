@@ -19,7 +19,7 @@ class NFCAppState extends State<NFCApp> {
     return MaterialApp(
       home: Scaffold(
         // backgroundColor: Colors.red,
-        appBar: AppBar(title: const Text('NFC Test Application')),
+        appBar: AppBar(title: const Text('NFC Test Application')), 
         body: SafeArea(
           child: FutureBuilder<bool>(
             future: NfcManager.instance.isAvailable(),
@@ -116,17 +116,20 @@ class NFCAppState extends State<NFCApp> {
                                 // onPressed: startNfcSession,
                                 onPressed: _mockNfcData,
                                 // onPressed: startNfcSession,
-                                child: const Text('Tag Read From Mock')),
-                                 ElevatedButton(
+                                child: const Text('Tag Read From Mock')
+                            ),
+                            ElevatedButton(
                                 // onPressed: startNfcSession,
                                 onPressed: _tagRead,
                                 // onPressed: startNfcSession,
                                 child: const Text('Tag Read')),
-                            isShowNdefWriteButton == true
-                                ? ElevatedButton(
+                            // isShowNdefWriteButton == true
+                            //     ? 
+                                ElevatedButton(
                                     onPressed: _ndefWrite,
-                                    child: const Text('Ndef Write'))
-                                : const SizedBox(),
+                                    child: const Text('Ndef Write')
+                                ),
+                                // : const SizedBox(),
                             isShowNNdefWriteLockButton == true
                                 ? ElevatedButton(
                                     onPressed: _ndefWriteLock,
@@ -171,8 +174,9 @@ class NFCAppState extends State<NFCApp> {
       },
       onError: (e) async {
         if (kDebugMode) {
-          print('Error starting NFC session: ${e.toString()}');
+          print('Error starting NFC session: ${e.details.toString()}');
           print('Error starting NFC session: ${e.message}');
+          print('com.Rafhan.NfcTest ${e.runtimeType}');
           print('Error starting NFC session: $e');
         }
       },
@@ -193,7 +197,10 @@ class NFCAppState extends State<NFCApp> {
           if (kDebugMode) {
             print('Inside try 2');
           }
-          result.value = tag.data;
+          setState(() {
+            result.value = tag.data;
+          });
+          
           
           if (kDebugMode) {
             print('Inside try 3');
@@ -208,9 +215,10 @@ class NFCAppState extends State<NFCApp> {
         },
         onError: (e) async {
           if (kDebugMode) {
-            print('Error starting NFC session: ${e.toString()}');
-            print('Error starting NFC session: ${e.message}');
-            print('Error starting NFC session: $e');
+            print('Error reading NFC session: ${e.details.toString()}');
+            print('Error reading NFC session: ${e.message}');
+            print('Error reading NFC session: ${e.runtimeType}');
+            print('Error reading NFC session: $e');
           }
         },
       );

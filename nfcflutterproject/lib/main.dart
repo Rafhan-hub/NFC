@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nfc_flutter_project/nfc.dart';
 import 'package:nfc_manager/nfc_manager.dart';
-import 'package:nfcflutterproject/nfc.dart';
 
 Future<void> main() async {
 WidgetsFlutterBinding.ensureInitialized();

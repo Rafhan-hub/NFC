@@ -1,6 +1,6 @@
 {
-    "name": "nfcflutterproject",
-    "short_name": "nfcflutterproject",
+    "name": "nfc_flutter_project",
+    "short_name": "nfc_flutter_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
